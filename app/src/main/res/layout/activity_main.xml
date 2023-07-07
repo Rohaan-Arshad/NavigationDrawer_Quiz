@@ -18,11 +18,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/toolbar"
             app:title="Navigation Drawer"
-            app:titleTextColor="@color/white"
-            android:background="@color/cardview_dark_background"
+            app:titleTextColor="@color/black"
+            android:background="@color/cardview_shadow_start_color"
             />
-
-        </RelativeLayout>
+    </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
