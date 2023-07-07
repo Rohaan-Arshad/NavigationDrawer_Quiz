@@ -76,9 +76,8 @@ public class TakeQuiz extends Fragment {
         end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ex.setText("Your Session Ended");
+                ex.setText("Session Ended! Check Score");
 
-                //ex.setText("Total Score is " + count +" / " +ne);
                 db.addScores(count,ne);
                 sky.setEnabled(false);
                 grass.setEnabled(false);
@@ -91,9 +90,10 @@ public class TakeQuiz extends Fragment {
             @Override
             public void onClick(View view) {
                 if (n == 0) {
-                    //ex.setText("Your answer is right");
+                    ex.setText("Select Next Word");
                     count++;
                 } else {
+                    ex.setText("Select Next Word");
                     //ex.setText("Your answer is not right");
 
                 }
@@ -103,9 +103,11 @@ public class TakeQuiz extends Fragment {
             @Override
             public void onClick(View view) {
                 if (n == 1) {
+                    ex.setText("Select Next Word");
                     //ex.setText("Your answer is right");
                     count++;
                 } else {
+                    ex.setText("Select Next Word");
                     //ex.setText("Your answer is not right");
                 }
             }
@@ -114,9 +116,11 @@ public class TakeQuiz extends Fragment {
             @Override
             public void onClick(View view) {
                 if (n == 2) {
+                    ex.setText("Select Next Word");
                     //ex.setText("Your answer is right");
                     count++;
                 } else {
+                    ex.setText("Select Next Word");
                     //ex.setText("Your answer is not right");
                 }
             }
