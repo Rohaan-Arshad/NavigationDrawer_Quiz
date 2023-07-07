@@ -39,6 +39,7 @@ public class TakeQuiz extends Fragment {
         next = view.findViewById(R.id.button4);
         end = view.findViewById(R.id.button10);
 
+        DBHelper db = new DBHelper(getContext());
         rand = new Random();
         n = rand.nextInt(3);
         if (n == 0) {
@@ -78,6 +79,7 @@ public class TakeQuiz extends Fragment {
                 ex.setText("Your Session Ended");
 
                 //ex.setText("Total Score is " + count +" / " +ne);
+                db.addScores(count,ne);
                 sky.setEnabled(false);
                 grass.setEnabled(false);
                 root.setEnabled(false);
