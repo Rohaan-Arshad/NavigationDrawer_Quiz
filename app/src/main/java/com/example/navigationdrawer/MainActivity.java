@@ -40,19 +40,18 @@ public class MainActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.home:
                         Toast.makeText(getApplicationContext(), "Home Panel is Open", Toast.LENGTH_LONG).show();
-                        drawer.closeDrawer(GravityCompat.START);
                         break;
 
                     case R.id.quiz:
                         Toast.makeText(getApplicationContext(), "Quiz Panel is Open", Toast.LENGTH_LONG).show();
-                        drawer.closeDrawer(GravityCompat.START);
                         break;
 
                     case R.id.result:
                         Toast.makeText(getApplicationContext(), "Result Panel is Open", Toast.LENGTH_LONG).show();
-                        drawer.closeDrawer(GravityCompat.START);
+
                         break;
                 }
+                drawer.closeDrawer(GravityCompat.START);
                 return true;
             }
         });

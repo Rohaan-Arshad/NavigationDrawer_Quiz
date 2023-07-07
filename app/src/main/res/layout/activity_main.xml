@@ -21,6 +21,12 @@
             app:titleTextColor="@color/black"
             android:background="@color/cardview_shadow_start_color"
             />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/container"
+            />
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
