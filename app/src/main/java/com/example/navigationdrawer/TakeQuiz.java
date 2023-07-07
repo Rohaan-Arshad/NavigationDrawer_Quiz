@@ -91,10 +91,10 @@ public class TakeQuiz extends Fragment {
             @Override
             public void onClick(View view) {
                 if (n == 0) {
-                    ex.setText("Your answer is right");
+                    //ex.setText("Your answer is right");
                     count++;
                 } else {
-                    ex.setText("Your answer is not right");
+                    //ex.setText("Your answer is not right");
 
                 }
             }
@@ -103,10 +103,10 @@ public class TakeQuiz extends Fragment {
             @Override
             public void onClick(View view) {
                 if (n == 1) {
-                    ex.setText("Your answer is right");
+                    //ex.setText("Your answer is right");
                     count++;
                 } else {
-                    ex.setText("Your answer is not right");
+                    //ex.setText("Your answer is not right");
                 }
             }
         });
@@ -114,10 +114,10 @@ public class TakeQuiz extends Fragment {
             @Override
             public void onClick(View view) {
                 if (n == 2) {
-                    ex.setText("Your answer is right");
+                    //ex.setText("Your answer is right");
                     count++;
                 } else {
-                    ex.setText("Your answer is not right");
+                    //ex.setText("Your answer is not right");
                 }
             }
         });

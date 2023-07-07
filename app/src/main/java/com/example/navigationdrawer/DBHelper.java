@@ -1,5 +1,6 @@
 package com.example.navigationdrawer;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -51,8 +52,8 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
-            int gainScore = cursor.getInt(cursor.getColumnIndex(COLUMN_GAIN_SCORE));
-            int totalScore = cursor.getInt(cursor.getColumnIndex(COLUMN_TOTAL_SCORE));
+            @SuppressLint("Range") int gainScore = cursor.getInt(cursor.getColumnIndex(COLUMN_GAIN_SCORE));
+            @SuppressLint("Range") int totalScore = cursor.getInt(cursor.getColumnIndex(COLUMN_TOTAL_SCORE));
 
             score = new Score(gainScore, totalScore);
         }
