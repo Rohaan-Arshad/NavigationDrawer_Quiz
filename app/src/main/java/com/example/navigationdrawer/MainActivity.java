@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -34,23 +35,28 @@ public class MainActivity extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.container,new home()).commit();
+        nav.setCheckedItem(R.id.home);
+
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            Fragment temp;
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.home:
-                        Toast.makeText(getApplicationContext(), "Home Panel is Open", Toast.LENGTH_LONG).show();
+                        temp = new home();
                         break;
 
                     case R.id.quiz:
-                        Toast.makeText(getApplicationContext(), "Quiz Panel is Open", Toast.LENGTH_LONG).show();
+                        temp = new TakeQuiz();
                         break;
 
                     case R.id.result:
-                        Toast.makeText(getApplicationContext(), "Result Panel is Open", Toast.LENGTH_LONG).show();
-
+                        temp = new ShowResult();
                         break;
                 }
+                getSupportFragmentManager().beginTransaction().replace(R.id.container,temp).commit();
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             }

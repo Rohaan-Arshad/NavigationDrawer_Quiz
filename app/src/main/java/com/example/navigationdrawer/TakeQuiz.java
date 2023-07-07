@@ -1,64 +1,125 @@
 package com.example.navigationdrawer;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TakeQuiz#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.fragment.app.Fragment;
+
+import java.util.Random;
+
 public class TakeQuiz extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    char skyletter[] = {'b', 'd', 'f', 'h', 'k', 'l', 't'};
+    char grassletter[] = {'a', 'c', 'e', 'i', 'm', 'n', 'o', 'r', 's', 'u', 'v', 'w', 'x', 'z'};
+    char rootletter[] = {'g', 'j', 'p', 'q', 'y'};
+    int count = 0;
+    int ne = 0;
+    TextView tx, ex;
+    Button sky, grass, root, next, end;
+    Random rand;
+    int n;
 
     public TakeQuiz() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TakeQuiz.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static TakeQuiz newInstance(String param1, String param2) {
-        TakeQuiz fragment = new TakeQuiz();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_take_quiz, container, false);
+
+        tx = view.findViewById(R.id.textView);
+        ex = view.findViewById(R.id.textView3);
+        sky = view.findViewById(R.id.button5);
+        grass = view.findViewById(R.id.button6);
+        root = view.findViewById(R.id.button8);
+        next = view.findViewById(R.id.button4);
+        end = view.findViewById(R.id.button10);
+
+        rand = new Random();
+        n = rand.nextInt(3);
+        if (n == 0) {
+            char i = skyletter[rand.nextInt(skyletter.length)];
+            tx.setText(String.valueOf(i));
+        } else if (n == 1) {
+            char i = grassletter[rand.nextInt(grassletter.length)];
+            tx.setText(String.valueOf(i));
+        } else if (n == 2) {
+            char i = rootletter[rand.nextInt(rootletter.length)];
+            tx.setText(String.valueOf(i));
         }
-    }
+        ne++;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_take_quiz, container, false);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ne++;
+                ex.setText("");
+                n = rand.nextInt(3);
+                if (n == 0) {
+                    char i = skyletter[rand.nextInt(skyletter.length)];
+                    tx.setText(String.valueOf(i));
+                } else if (n == 1) {
+                    char i = grassletter[rand.nextInt(grassletter.length)];
+                    tx.setText(String.valueOf(i));
+                } else if (n == 2) {
+                    char i = rootletter[rand.nextInt(rootletter.length)];
+                    tx.setText(String.valueOf(i));
+                }
+            }
+        });
+
+        end.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ex.setText("Your Session Ended");
+
+                //ex.setText("Total Score is " + count +" / " +ne);
+                sky.setEnabled(false);
+                grass.setEnabled(false);
+                root.setEnabled(false);
+                next.setEnabled(false);
+            }
+        });
+
+        sky.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (n == 0) {
+                    ex.setText("Your answer is right");
+                    count++;
+                } else {
+                    ex.setText("Your answer is not right");
+
+                }
+            }
+        });
+        grass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (n == 1) {
+                    ex.setText("Your answer is right");
+                    count++;
+                } else {
+                    ex.setText("Your answer is not right");
+                }
+            }
+        });
+        root.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (n == 2) {
+                    ex.setText("Your answer is right");
+                    count++;
+                } else {
+                    ex.setText("Your answer is not right");
+                }
+            }
+        });
+
+        return view;
     }
 }
