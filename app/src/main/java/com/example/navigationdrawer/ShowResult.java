@@ -34,17 +34,23 @@ public class ShowResult extends Fragment {
             int gainScore = recentScores.getGainScore();
             int totalScore = recentScores.getTotalScore();
             int wrongAnswers = totalScore - gainScore;
-
             StringBuilder stringBuilder = new StringBuilder();
 
             stringBuilder.append("Correct Answer Given: ").append(gainScore).append("\n");
-            stringBuilder.append("Total Question: ").append(totalScore).append("\n");
-            stringBuilder.append("Wrong Answers: ").append(wrongAnswers).append("\n\n");
+            stringBuilder.append("Total Question Answers: ").append(totalScore).append("\n");
+            stringBuilder.append("Wrong Answers GIven: ").append(wrongAnswers).append("\n\n");
 
-            if (wrongAnswers < 3) {
-                stringBuilder.append("    Status :     Excellent").append("\n");
-            } else {
-                stringBuilder.append("Status :     Overall Good").append("\n");
+
+            if (gainScore==0) {
+                stringBuilder.append("Status: Fail").append("\n");
+                t.setText(stringBuilder.toString());
+                return view;
+            }
+
+            if (wrongAnswers == 0) {
+                stringBuilder.append("Status: Excellent").append("\n");
+            } else if (wrongAnswers > 0 ) {
+                stringBuilder.append("Status: Overall Good").append("\n");
             }
 
             t.setText(stringBuilder.toString());

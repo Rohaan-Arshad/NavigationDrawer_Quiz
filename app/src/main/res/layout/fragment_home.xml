@@ -6,14 +6,25 @@
     tools:context=".home">
 
     <!-- TODO: Update blank fragment layout -->
+
+    <!-- Add the Button here -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="Welcome to Home Page .
-In this Quizing app we take quiz of you and show your result"
-        android:textSize="28dp"
-        android:textStyle="bold"
+        android:gravity="center"
         android:padding="12sp"
-        android:gravity="center"/>
+        android:text="Welcome to Home Page.
+In this Quizing app, we take a quiz of you and show your result"
+        android:textSize="28dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/myButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:textSize="22dp"
+        android:background="@color/purple_200"
+        android:text="Open Repository" />
 
 </FrameLayout>

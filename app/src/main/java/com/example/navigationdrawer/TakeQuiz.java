@@ -73,18 +73,7 @@ public class TakeQuiz extends Fragment {
             }
         });
 
-        end.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ex.setText("Session Ended! Check Score");
 
-                db.addScores(count,ne);
-                sky.setEnabled(false);
-                grass.setEnabled(false);
-                root.setEnabled(false);
-                next.setEnabled(false);
-            }
-        });
 
         sky.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +83,6 @@ public class TakeQuiz extends Fragment {
                     count++;
                 } else {
                     ex.setText("Select Next Word");
-                    //ex.setText("Your answer is not right");
 
                 }
             }
@@ -104,11 +92,9 @@ public class TakeQuiz extends Fragment {
             public void onClick(View view) {
                 if (n == 1) {
                     ex.setText("Select Next Word");
-                    //ex.setText("Your answer is right");
                     count++;
                 } else {
                     ex.setText("Select Next Word");
-                    //ex.setText("Your answer is not right");
                 }
             }
         });
@@ -117,12 +103,22 @@ public class TakeQuiz extends Fragment {
             public void onClick(View view) {
                 if (n == 2) {
                     ex.setText("Select Next Word");
-                    //ex.setText("Your answer is right");
                     count++;
                 } else {
                     ex.setText("Select Next Word");
-                    //ex.setText("Your answer is not right");
                 }
+            }
+        });
+        end.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ex.setText("Session Ended! Check Score");
+                db.addScores(count,ne);
+                grass.setEnabled(false);
+                root.setEnabled(false);
+                next.setEnabled(false);sky.setEnabled(false);
+
+
             }
         });
 
